@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamma_yonalish</title>
+</head>
+<body>
+        <h1>Hamma yonalish ma'lumoti ro'yxati</h1><br><br>
+        <hr>
+        {% for yonal in yonalish %}
+        <br>
+        <h1>{{yonal.id}}. {{yonal.nom}} ({{yonal.aktiv}})</h1>
+        {% endfor %}
+  <br><br>
+        <form method="post">{% csrf_token %}
+            <lablel>Nomi:</lablel>
+            <input type="text" placeholder="Yonalish nom kiriting:" name="y_n">
+            <br><br>
+            <label>Aktiv:</label>
+            <input type="checkbox" name="a_k">
+            <br><br>
+            <button>Qo'shish</button>
+        </form>
+        <br><br>
+</body>
+</html>

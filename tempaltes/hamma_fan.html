@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamma fanlar</title>
+</head>
+<body>
+        <h1>Hamma Fanlar ma'lumoti ro'yxati</h1><br><br>
+        <hr>
+        <br>
+        {% for fan in fanlar %}
+        <br>
+        <h1>{{fan.id}}. {{fan.nom}} ({{fan.yonalish.asosiy}})</h1>
+        {% endfor %}
+        <br><br>
+        <form method="post">{% csrf_token %}
+            <lablel>Nomi:</lablel>
+            <input type="text" placeholder="Fan nom kiriting:" name="f">
+            <br><br>
+            <label>Yonalish:</label>
+            <input type="text" placeholder="Yonalish kiriting:">
+            <br><br>
+            <label>Asosiy</label>
+            <input type="text" name="a">
+            <br><br>
+            <button>Qo'shish</button>
+        </form>
+        <br><br>
+</body>
+</html>
