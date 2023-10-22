@@ -51,3 +51,27 @@ def ustozlar(request):
     }
     return render(request, "ustoz.html", content)
 
+def hamma_fan_update(request, son):
+    if request.method == 'POST':
+        Fan.objects.filter(id=son).update(
+            nom = request.POST.get("f"),
+            yonalish = request.POST.get("y_o"),
+            asosiy = request.POST.get("a")
+        )
+        return redirect("/fanlar/")
+    content = {
+        "fan": Fan.objects.get(id=son)
+    }
+    return render(request, "hamma_fan_update.html", content)
+
+def yonalish_update(request, son):
+    if request.method == 'POST':
+        Yonalish.objects.filter(id=son).update(
+            nom = request.POST.get("y_n"),
+            aktiv = request.POST.get("a_k")
+        )
+        return redirect("/yonalish/")
+    content = {
+        "yonal": Yonalish.objects.get(id=son)
+    }
+    return render(request, "yonalish_update.html", content)

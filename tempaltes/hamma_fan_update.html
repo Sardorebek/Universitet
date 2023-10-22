@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan ma'lumotlarini o'zgartirish</title>
+</head>
+<body>
+<br><br>
+        <form method="post">{% csrf_token %}
+            <lablel>Nomi:</lablel>
+            <input type="text"  name="f" value="{{fan.nom}}">
+            <br><br>
+            <label>Yonalish:</label>
+            <input type="text" name="y_o" value="{{fan.yonalish}}">
+            <br><br>
+            <label>Asosiy</label>
+            <input type="text" name="a" value="{{fan.asosiy}}">
+            <br><br>
+            <button>Qo'shish</button>
+        </form>
+        <br><br>
+</body>
+</html>

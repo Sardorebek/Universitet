@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yonalish ma'lumotni o'zgartish</title>
+</head>
+<body>
+    <br><br>
+        <form method="post">{% csrf_token %}
+            <lablel>Nomi:</lablel>
+            <input type="text" name="y_n" value="{{yonal.nom}}">
+            <br><br>
+            <label>Aktiv:</label>
+            <input type="checkbox" name="a_k" value="{{yonal.aktiv}}">
+            <br><br>
+            <button>Qo'shish</button>
+        </form>
+        <br><br>
+</body>
+</html>

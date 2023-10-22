@@ -10,6 +10,9 @@
         {% for yonal in yonalish %}
         <br>
         <h1>{{yonal.id}}. {{yonal.nom}} ({{yonal.aktiv}})</h1>
+        <a href="/yonalish_update/{{yonal.id}}/">
+            <button>Update</button>
+        </a>
         {% endfor %}
   <br><br>
         <form method="post">{% csrf_token %}

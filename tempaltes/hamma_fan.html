@@ -11,6 +11,9 @@
         {% for fan in fanlar %}
         <br>
         <h1>{{fan.id}}. {{fan.nom}} ({{fan.yonalish.asosiy}})</h1>
+        <a href="/hamma_fan_update/{{fan.id}}/">
+            <button>Update</button>
+        </a>
         {% endfor %}
         <br><br>
         <form method="post">{% csrf_token %}

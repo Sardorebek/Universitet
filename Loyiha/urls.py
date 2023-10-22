@@ -9,4 +9,6 @@ urlpatterns = [
     path('fanlar/', fanlar),
     path('yonalish/', yonalishlar),
     path('ustoz/', ustozlar),
+    path('hamma_fan_update/<int:son>/', hamma_fan_update),
+    path('yonalish_update/<int:son>/', yonalish_update),
 ]
