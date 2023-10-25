@@ -16,12 +16,7 @@
         {% endfor %}
   <br><br>
         <form method="post">{% csrf_token %}
-            <lablel>Nomi:</lablel>
-            <input type="text" placeholder="Yonalish nom kiriting:" name="y_n">
-            <br><br>
-            <label>Aktiv:</label>
-            <input type="checkbox" name="a_k">
-            <br><br>
+            {{ forma.as_p }}
             <button>Qo'shish</button>
         </form>
         <br><br>

@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
+from .forms import *
 
 def Salomlash(request):
     return HttpResponse("Salom Dunyo")
@@ -10,27 +11,32 @@ def homepage(request):
 
 def fanlar(request):
     if request.method == 'POST':
-        Fan.objects.create(
-            nom = request.POST.get("f"),
-            yonalish = request.POST.get("y"),
-            asosiy = request.POST.get("a") == "on"
-        )
+        forma = FanForm(request.POST)
+        if forma.is_valid():
+            forma.save()
+            # data = forma.cleaned_data
+            # Fan.objects.create(
+            #     nom = data.get("f"),
+            #     yonalish = data.get("y"),
+            #     asosiy = data.get("a") == "on"
+            # )
         return redirect("/fanlar/")
     content = {
-        "fanlar": Fan.objects.all()
+        "fanlar": Fan.objects.all(),
+        "forma": FanForm()
     }
     return render(request, "hamma_fan.html", content)
 
 
 def yonalishlar(request):
     if request.method == 'POST':
-        Yonalish.objects.create(
-            nom = request.POST.get("y_n"),
-            aktiv = request.POST.get("a_k") == "on"
-        )
+        forma = YonalishForm(request.POST)
+        if forma.is_valid():
+            forma.save()
         return redirect("/yonalish/")
     content = {
-        "yonalish": Fan.objects.all()
+        "yonalish": Fan.objects.all(),
+        "forma": YonalishForm()
     }
     return render(request, "hamma_yonalish.html", content)
 
@@ -53,14 +59,16 @@ def ustozlar(request):
 
 def hamma_fan_update(request, son):
     if request.method == 'POST':
-        Fan.objects.filter(id=son).update(
-            nom = request.POST.get("f"),
-            yonalish = request.POST.get("y_o"),
-            asosiy = request.POST.get("a")
-        )
+
+        # Fan.objects.filter(id=son).update(
+        #     nom = request.POST.get("f"),
+        #     yonalish = request.POST.get("y_o"),
+        #     asosiy = request.POST.get("a")
+        # )
         return redirect("/fanlar/")
     content = {
-        "fan": Fan.objects.get(id=son)
+        "fan": Fan.objects.get(id=son),
+        "forma": FanForm
     }
     return render(request, "hamma_fan_update.html", content)
 
